@@ -48,6 +48,25 @@ def movies_with_director_key(name, movies_collection)
   # Array of Hashes where each Hash represents a movie; however, they should all have a
   # :director_name key. This addition can be done by using the provided
   # movie_with_director_name method
+  movieArray = []
+  dirIndex = 0 
+  while dirIndex < movies_collection.length do 
+    movieIndex = 0 
+    if movieArray.length == 0  
+      movieArray.push(movies_collection[movieIndex]) 
+      movieArray[movieIndex][:director_name] = name
+      puts "nothing in array added #{movieArray} + #{movieArray.length}"
+      movieIndex += 1
+    else 
+      puts "stuff in array, adding director"
+      movieArray.push(movies_collection[movieIndex + 1])
+      movieArray[movieIndex + 1][:director_name] = name
+      movieIndex += 1
+    end
+    dirIndex += 1
+  end   
+  puts movieArray
+  movieArray
 end
 
 
@@ -63,6 +82,19 @@ def gross_per_studio(collection)
   #
   # Hash whose keys are the studio names and whose values are the sum
   # total of all the worldwide_gross numbers for every movie in the input Hash
+  grossHash = {}
+  index = 0 
+  
+  while index < collection.length do 
+  puts collection
+  puts collection[index][:title]
+  puts collection[index][:worldwide_gross]
+    
+  
+  index += 1
+  end 
+
+  grossHash
 end
 
 def movies_with_directors_set(source)
@@ -76,6 +108,18 @@ def movies_with_directors_set(source)
   #
   # Array of Arrays containing all of a director's movies. Each movie will need
   # to have a :director_name key added to it.
+  directorArray = []
+  dirIndex = 0 
+  while dirIndex < source.length do 
+  movieIndex = 0
+    while movieIndex < source[dirIndex][:movies].length do 
+    #directorArray.push([:title => source[dirIndex][:movies][movieIndex][:title], :director_name => source[dirIndex][:name]])
+    directorArray.push([source[dirIndex][:movies][movieIndex], source[dirIndex][:movies][movieIndex][:director_name] = source[dirIndex][:name]])
+    movieIndex += 1
+    end
+  dirIndex += 1
+  end
+  directorArray
 end
 
 # ----------------    End of Your Code Region --------------------
